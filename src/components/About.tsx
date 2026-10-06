@@ -1,0 +1,178 @@
+import { useReveal } from '../hooks/useReveal';
+
+export default function About() {
+  const ref = useReveal() as React.RefObject<HTMLDivElement>;
+  const imgRef = useReveal(0.1) as React.RefObject<HTMLDivElement>;
+
+  return (
+    <section id="sobre" className="py-32 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          {/* Image / Visual */}
+          <div
+            ref={imgRef as any}
+            className="reveal-left relative"
+          >
+            <div
+              className="relative rounded-2xl overflow-hidden aspect-square max-w-sm mx-auto md:mx-0"
+              style={{
+                background: 'linear-gradient(135deg, #131720, #0e1119)',
+                border: '1px solid rgba(255,255,255,0.06)',
+              }}
+            >
+              {/* Photo placeholder with gradient overlay */}
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&auto=format"
+                alt="Alex Santos"
+                className="w-full h-full object-cover opacity-80"
+              />
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: 'linear-gradient(to top, rgba(9,11,17,0.8) 0%, transparent 60%)',
+                }}
+              />
+
+              {/* Floating badge */}
+              <div
+                className="absolute bottom-5 left-5 right-5 flex items-center gap-3 p-3 rounded-xl"
+                style={{
+                  background: 'rgba(9,11,17,0.8)',
+                  backdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                }}
+              >
+                <div
+                  className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                  style={{ background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)' }}
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-xs font-semibold text-white/90">5+ anos de código</div>
+                  <div className="text-xs text-white/40 font-mono">São Paulo, BR → Remote</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative elements */}
+            <div
+              className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl"
+              style={{
+                background: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(139,92,246,0.15))',
+                border: '1px solid rgba(139,92,246,0.2)',
+                zIndex: -1,
+              }}
+            />
+            <div
+              className="absolute -bottom-4 -left-4 w-16 h-16 rounded-xl"
+              style={{
+                background: 'rgba(16,185,129,0.1)',
+                border: '1px solid rgba(16,185,129,0.2)',
+                zIndex: -1,
+              }}
+            />
+          </div>
+
+          {/* Text */}
+          <div ref={ref as any} className="reveal">
+            <div className="flex items-center gap-3 mb-6">
+              <span
+                className="font-mono text-xs font-medium px-3 py-1 rounded-full"
+                style={{
+                  background: 'rgba(59,130,246,0.1)',
+                  color: '#60a5fa',
+                  border: '1px solid rgba(59,130,246,0.2)',
+                }}
+              >
+                01 — Sobre
+              </span>
+            </div>
+
+            <h2
+              className="font-bold mb-6 leading-tight"
+              style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', letterSpacing: '-0.02em' }}
+            >
+              Engenheiro que{' '}
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #60a5fa, #a78bfa)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                pensa em produto
+              </span>
+            </h2>
+
+            <div className="space-y-4 text-white/60 leading-relaxed">
+              <p>
+                Olá! Sou Alex Santos, desenvolvedor full-stack apaixonado por criar experiências
+                digitais que combinam performance técnica com design intuitivo. Atuo desde 2019
+                no ecossistema JavaScript/TypeScript, com foco em React, Node.js e arquiteturas
+                cloud-native.
+              </p>
+              <p>
+                Minha abordagem vai além do código: entendo o negócio, questiono os requisitos
+                e entrego soluções que realmente movem o ponteiro. Já contribuí para produtos
+                com milhões de usuários e liderado times de até 8 pessoas.
+              </p>
+              <p>
+                Fora do trabalho, contribuo para open source, escrevo sobre engenharia de software
+                e experimento com IA aplicada a ferramentas para devs.
+              </p>
+            </div>
+
+            {/* Tags */}
+            <div className="flex flex-wrap gap-2 mt-8">
+              {['React', 'TypeScript', 'Node.js', 'AWS', 'PostgreSQL', 'System Design'].map((tag) => (
+                <span
+                  key={tag}
+                  className="text-xs font-medium px-3 py-1.5 rounded-lg"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    color: 'rgba(255,255,255,0.65)',
+                  }}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            {/* Links */}
+            <div className="flex gap-4 mt-8">
+              <a
+                href="#"
+                className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors group"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                GitHub
+                <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors group"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                LinkedIn
+                <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
