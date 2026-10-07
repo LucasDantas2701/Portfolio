@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import { currently as items } from '../data/profile';
 
 type CurrentItem = { icon: string; label: string; title: string; sub: string; color: string };
 
@@ -41,50 +42,6 @@ function CurrentCard({ item, index }: { item: CurrentItem; index: number }) {
   );
 }
 
-const items = [
-  {
-    icon: '📖',
-    label: 'Estudando',
-    title: 'Distributed Systems & Consensus Algorithms',
-    sub: 'DDIA + papers do Google Spanner',
-    color: '#3b82f6',
-  },
-  {
-    icon: '🔨',
-    label: 'Construindo',
-    title: 'Synapse AI v2',
-    sub: 'Code review com LLMs multi-agente',
-    color: '#8b5cf6',
-  },
-  {
-    icon: '🎯',
-    label: 'Explorando',
-    title: 'Rust para sistemas embarcados',
-    sub: 'Projetos com ESP32 e Raspberry Pi',
-    color: '#10b981',
-  },
-  {
-    icon: '✍️',
-    label: 'Escrevendo',
-    title: 'Blog sobre arquitetura de software',
-    sub: 'Artigos sobre DDD, CQRS e Event Sourcing',
-    color: '#f59e0b',
-  },
-  {
-    icon: '🎙️',
-    label: 'Participando',
-    title: 'Dev Talks São Paulo',
-    sub: 'Comunidade de engenheiros de software',
-    color: '#ec4899',
-  },
-  {
-    icon: '🌱',
-    label: 'Interesse',
-    title: 'IA aplicada a ferramentas para devs',
-    sub: 'LLMs, Code Intelligence, AgentOps',
-    color: '#a78bfa',
-  },
-];
 
 export default function Currently() {
   const titleRef = useReveal() as React.RefObject<HTMLDivElement>;

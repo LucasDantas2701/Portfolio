@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { profile } from '../data/profile';
 
 const links = [
   { label: 'Sobre', href: '#sobre' },
@@ -38,10 +39,10 @@ export default function Nav() {
               background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
             }}
           >
-            AS
+            {profile.initials}
           </span>
           <span className="font-semibold text-sm tracking-wide text-white/90 group-hover:text-white transition-colors">
-            alexsantos.dev
+            {profile.brand}
           </span>
         </a>
 
@@ -64,7 +65,7 @@ export default function Nav() {
               boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)',
             }}
           >
-            Hire me
+            Fale comigo
           </a>
         </div>
 

@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import { profile, about } from '../data/profile';
 
 export default function About() {
   const ref = useReveal() as React.RefObject<HTMLDivElement>;
@@ -22,8 +23,8 @@ export default function About() {
             >
               {/* Photo placeholder with gradient overlay */}
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&auto=format"
-                alt="Alex Santos"
+                src={profile.photo}
+                alt={profile.name}
                 className="w-full h-full object-cover opacity-80"
               />
               <div
@@ -51,8 +52,8 @@ export default function About() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold text-white/90">5+ anos de código</div>
-                  <div className="text-xs text-white/40 font-mono">São Paulo, BR → Remote</div>
+                  <div className="text-xs font-semibold text-white/90">{about.badgeTitle}</div>
+                  <div className="text-xs text-white/40 font-mono">{about.badgeSub}</div>
                 </div>
               </div>
             </div>
@@ -95,7 +96,7 @@ export default function About() {
               className="font-bold mb-6 leading-tight"
               style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', letterSpacing: '-0.02em' }}
             >
-              Engenheiro que{' '}
+              Automatizo o que{' '}
               <span
                 style={{
                   background: 'linear-gradient(135deg, #60a5fa, #a78bfa)',
@@ -104,31 +105,19 @@ export default function About() {
                   backgroundClip: 'text',
                 }}
               >
-                pensa em produto
+                é repetitivo
               </span>
             </h2>
 
             <div className="space-y-4 text-white/60 leading-relaxed">
-              <p>
-                Olá! Sou Alex Santos, desenvolvedor full-stack apaixonado por criar experiências
-                digitais que combinam performance técnica com design intuitivo. Atuo desde 2019
-                no ecossistema JavaScript/TypeScript, com foco em React, Node.js e arquiteturas
-                cloud-native.
-              </p>
-              <p>
-                Minha abordagem vai além do código: entendo o negócio, questiono os requisitos
-                e entrego soluções que realmente movem o ponteiro. Já contribuí para produtos
-                com milhões de usuários e liderado times de até 8 pessoas.
-              </p>
-              <p>
-                Fora do trabalho, contribuo para open source, escrevo sobre engenharia de software
-                e experimento com IA aplicada a ferramentas para devs.
-              </p>
+              {about.paragraphs.map((p) => (
+                <p key={p.slice(0, 24)}>{p}</p>
+              ))}
             </div>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-8">
-              {['React', 'TypeScript', 'Node.js', 'AWS', 'PostgreSQL', 'System Design'].map((tag) => (
+              {about.tags.map((tag) => (
                 <span
                   key={tag}
                   className="text-xs font-medium px-3 py-1.5 rounded-lg"
@@ -146,7 +135,9 @@ export default function About() {
             {/* Links */}
             <div className="flex gap-4 mt-8">
               <a
-                href="#"
+                href={profile.github}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors group"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -158,7 +149,9 @@ export default function About() {
                 </svg>
               </a>
               <a
-                href="#"
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors group"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">

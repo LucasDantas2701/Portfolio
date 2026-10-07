@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import { skillCategories as categories, featuredSkills, otherTech } from '../data/profile';
 
 type Category = { label: string; icon: string; color: string; skills: string[] };
 
@@ -45,41 +46,7 @@ function CategoryCard({ cat }: { cat: Category }) {
   );
 }
 
-const categories = [
-  {
-    label: 'Frontend',
-    icon: '⬡',
-    color: '#3b82f6',
-    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'GraphQL'],
-  },
-  {
-    label: 'Backend',
-    icon: '⬢',
-    color: '#8b5cf6',
-    skills: ['Node.js', 'Fastify', 'NestJS', 'PostgreSQL', 'Redis', 'REST APIs'],
-  },
-  {
-    label: 'Infraestrutura',
-    icon: '◈',
-    color: '#10b981',
-    skills: ['AWS', 'Docker', 'Kubernetes', 'CI/CD', 'Terraform', 'Vercel'],
-  },
-  {
-    label: 'Ferramentas',
-    icon: '◇',
-    color: '#f59e0b',
-    skills: ['Git', 'Jest', 'Vitest', 'Figma', 'Storybook', 'Datadog'],
-  },
-];
 
-const featuredSkills = [
-  { name: 'React / Next.js', level: 95 },
-  { name: 'TypeScript', level: 92 },
-  { name: 'Node.js', level: 88 },
-  { name: 'AWS & Cloud', level: 80 },
-  { name: 'System Design', level: 78 },
-  { name: 'PostgreSQL', level: 82 },
-];
 
 function SkillBar({ name, level, delay }: { name: string; level: number; delay: number }) {
   const ref = useReveal(0.3) as React.RefObject<HTMLDivElement>;
@@ -149,7 +116,7 @@ export default function Skills() {
             </span>
           </h2>
           <p className="text-white/45 mt-4 max-w-lg mx-auto leading-relaxed">
-            Tecnologias que uso no dia a dia para construir produtos sólidos, escaláveis e bonitos.
+            Tecnologias que uso no dia a dia em automação, dados e desenvolvimento.
           </p>
         </div>
 
@@ -172,7 +139,7 @@ export default function Skills() {
                 letterSpacing: '0.08em',
               }}
             >
-              // nível de domínio
+              // nível de domínio (autoavaliação)
             </div>
             {featuredSkills.map((s, i) => (
               <SkillBar key={s.name} name={s.name} level={s.level} delay={i * 80} />
@@ -183,14 +150,10 @@ export default function Skills() {
         {/* Bottom strip — more tags */}
         <div className="mt-16 pt-12" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <p className="text-center text-white/35 text-xs font-mono mb-6 uppercase tracking-widest">
-            Também trabalhei com
+            Também uso
           </p>
           <div className="flex flex-wrap gap-2 justify-center">
-            {[
-              'Vue.js', 'Python', 'Go', 'MongoDB', 'Prisma', 'tRPC',
-              'Stripe', 'Supabase', 'Firebase', 'Cloudflare Workers',
-              'Turborepo', 'Nx', 'Playwright', 'Cypress',
-            ].map((t) => (
+            {otherTech.map((t) => (
               <span
                 key={t}
                 className="text-xs px-3 py-1.5 rounded-full font-medium transition-colors duration-200 hover:border-white/20 cursor-default"

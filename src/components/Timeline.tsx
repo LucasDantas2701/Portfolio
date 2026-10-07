@@ -1,56 +1,6 @@
 import { useReveal } from '../hooks/useReveal';
+import { timeline as events, timelineSubtitle, type TimelineEvent } from '../data/profile';
 
-const events = [
-  {
-    year: '2024',
-    title: 'Tech Lead @ Nuvem Digital',
-    desc: 'Liderança técnica de um time de 6 engenheiros. Arquitetura de plataforma de pagamentos que processa R$50M/mês. Migração para microserviços com zero downtime.',
-    type: 'work',
-    color: '#3b82f6',
-  },
-  {
-    year: '2023',
-    title: 'Senior Dev @ Loja Fácil',
-    desc: 'Desenvolvimento do novo checkout Loja Fácil. Redução de 40% no abandono de carrinho. Stack: React, Node.js, PostgreSQL.',
-    type: 'work',
-    color: '#8b5cf6',
-  },
-  {
-    year: '2022',
-    title: 'Lançamento Flowkit UI',
-    desc: 'Criação e lançamento do design system open source que acumulou 3k+ stars no GitHub em 6 meses.',
-    type: 'project',
-    color: '#10b981',
-  },
-  {
-    year: '2021',
-    title: 'Mid-level Dev @ Startup XYZ',
-    desc: 'Desenvolvimento de plataforma SaaS B2B de RH. Responsável pelo módulo de relatórios e integrações com ERPs.',
-    type: 'work',
-    color: '#8b5cf6',
-  },
-  {
-    year: '2020',
-    title: 'AWS Certified Solutions Architect',
-    desc: 'Certificação AWS – Associate e início das especializações em arquitetura cloud e infraestrutura como código.',
-    type: 'cert',
-    color: '#f59e0b',
-  },
-  {
-    year: '2019',
-    title: 'Primeiro emprego — Junior Dev',
-    desc: 'Desenvolvedor júnior em agência digital. Primeiros projetos reais com React e Node. Aprendizado intenso sobre entrega e deadline.',
-    type: 'work',
-    color: '#3b82f6',
-  },
-  {
-    year: '2018',
-    title: 'Bacharel em Ciência da Computação',
-    desc: 'Formação pela Universidade de São Paulo. TCC sobre otimização de consultas em bancos de dados distribuídos.',
-    type: 'education',
-    color: '#a78bfa',
-  },
-];
 
 const typeIcon: Record<string, string> = {
   work: '💼',
@@ -59,7 +9,7 @@ const typeIcon: Record<string, string> = {
   education: '🎓',
 };
 
-function TimelineItem({ event, side }: { event: typeof events[0]; side: 'left' | 'right' }) {
+function TimelineItem({ event, side }: { event: TimelineEvent; side: 'left' | 'right' }) {
   const ref = useReveal(0.15) as React.RefObject<HTMLDivElement>;
 
   return (
@@ -150,7 +100,7 @@ export default function Timeline() {
             </span>
           </h2>
           <p className="text-white/45 mt-4 leading-relaxed">
-            Da faculdade ao tech lead — 6 anos de crescimento contínuo.
+            {timelineSubtitle}
           </p>
         </div>
 

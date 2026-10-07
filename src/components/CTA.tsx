@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import { profile, cta } from '../data/profile';
 
 export default function CTA() {
   const ref = useReveal(0.2) as React.RefObject<HTMLDivElement>;
@@ -64,14 +65,14 @@ export default function CTA() {
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              Disponível para freelance e full-time
+              {cta.status}
             </div>
 
             <h2
               className="font-bold mb-4"
               style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '-0.03em' }}
             >
-              Vamos construir algo{' '}
+              Vamos{' '}
               <span
                 style={{
                   background: 'linear-gradient(135deg, #60a5fa, #a78bfa, #34d399)',
@@ -80,18 +81,17 @@ export default function CTA() {
                   backgroundClip: 'text',
                 }}
               >
-                incrível
+                conversar
               </span>
             </h2>
 
             <p className="text-white/55 max-w-xl mx-auto leading-relaxed mb-10">
-              Tenho interesse em projetos desafiadores, oportunidades de tech lead e colaborações
-              com times de alta performance. Se você tem um problema complexo, quero ouvir.
+              {cta.text}
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center mb-12">
               <a
-                href="mailto:alex@alexsantos.dev"
+                href={`mailto:${profile.email}`}
                 className="group flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105"
                 style={{
                   background: 'linear-gradient(135deg, #3b82f6, #8b5cf6)',
@@ -101,10 +101,12 @@ export default function CTA() {
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                alex@alexsantos.dev
+                {profile.email}
               </a>
               <a
-                href="#"
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 px-8 py-4 rounded-full font-semibold border transition-all duration-300 hover:scale-105 hover:border-white/25"
                 style={{
                   borderColor: 'rgba(255,255,255,0.15)',
@@ -112,7 +114,7 @@ export default function CTA() {
                   color: 'rgba(255,255,255,0.8)',
                 }}
               >
-                Agendar conversa
+                Falar no LinkedIn
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
@@ -124,11 +126,7 @@ export default function CTA() {
               className="flex flex-wrap gap-6 justify-center"
               style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '32px' }}
             >
-              {[
-                { icon: '⚡', text: 'Resposta em até 24h' },
-                { icon: '🌎', text: 'Trabalho 100% remoto' },
-                { icon: '🕐', text: 'GMT-3 · São Paulo' },
-              ].map((info) => (
+              {cta.info.map((info) => (
                 <div key={info.text} className="flex items-center gap-2 text-sm text-white/45">
                   <span>{info.icon}</span>
                   <span>{info.text}</span>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { profile, heroStats } from '../data/profile';
 
-const roles = ['Full-Stack Developer', 'UI/UX Engineer', 'Tech Lead', 'Open Source Contributor'];
+const roles = profile.roles;
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -102,7 +103,7 @@ export default function Hero() {
           }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          Disponível para novos projetos
+          {profile.status}
         </div>
 
         {/* Name */}
@@ -114,7 +115,7 @@ export default function Hero() {
             transitionDelay: '200ms',
           }}
         >
-          Alex Santos
+          {profile.name}
         </h1>
 
         {/* Typewriter role */}
@@ -147,8 +148,7 @@ export default function Hero() {
           className={`text-white/50 font-light max-w-lg mx-auto mb-12 leading-relaxed transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ fontSize: 'clamp(1rem, 1.8vw, 1.15rem)', transitionDelay: '450ms' }}
         >
-          Transformo ideias complexas em produtos digitais elegantes —
-          do conceito ao deploy, com código limpo e experiências que importam.
+          {profile.tagline}
         </p>
 
         {/* CTAs */}
@@ -187,11 +187,7 @@ export default function Hero() {
           className={`flex flex-wrap gap-8 justify-center mt-20 transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
           style={{ transitionDelay: '700ms' }}
         >
-          {[
-            { value: '5+', label: 'Anos de experiência' },
-            { value: '40+', label: 'Projetos entregues' },
-            { value: '12+', label: 'Tecnologias dominadas' },
-          ].map((s) => (
+          {heroStats.map((s) => (
             <div key={s.label} className="text-center">
               <div
                 className="font-bold text-2xl"
