@@ -13,26 +13,26 @@ export const profile = {
   // Foto do GitHub. Para usar outra, coloque o arquivo em /public e troque por '/foto.jpg'.
   photo: 'https://github.com/LucasDantas2701.png?size=500',
   status: 'Em busca de estágio',
-  roles: ['Desenvolvedor Python', 'Automação Web & RPA', 'Agentes de IA', 'Automação de Testes'],
+  roles: ['Desenvolvedor Python', 'Agentes de IA', 'Servidores MCP', 'Automação Web & RPA'],
   tagline:
-    'Construo automações web, bots e agentes de IA em Python — do script que coleta dados ao agente que entende um pedido em português e executa no navegador.',
+    'Construo agentes de IA com modelos locais, servidores MCP e automações web em Python — do script que coleta dados ao agente que entende um pedido em português e executa no navegador.',
 };
 
 export const heroStats = [
-  { value: '7º', label: 'Período de Eng. da Computação' },
+  { value: '8º', label: 'Período de Eng. da Computação' },
   { value: '2+', label: 'Anos de experiência em TI' },
-  { value: '6', label: 'Projetos no GitHub' },
+  { value: '8', label: 'Projetos em destaque' },
 ];
 
 export const about = {
   badgeTitle: 'Engenharia da Computação',
   badgeSub: 'Manaus, AM',
   paragraphs: [
-    'Olá! Sou Lucas Dantas, estudante do 7º período de Engenharia da Computação na Faculdade Matias Machline. Trabalho com Python no dia a dia, principalmente com automação web, RPA e tratamento de dados.',
-    'Hoje sou bolsista em IA e Automação na AX Academy (FPF Tech / LG Electronics Brasil), onde desenvolvo automações com Playwright, Selenium, PyAutoGUI e BotCity em ambiente industrial. Antes, passei dois anos como estagiário de TI na Secretaria de Segurança Pública do Amazonas, investigando, reproduzindo e documentando falhas em sistemas internos.',
-    'Meu projeto principal é o ANCHOR, um agente que transforma pedidos em linguagem natural em ações no navegador usando modelos de IA locais. Também gosto de sistemas embarcados e já trabalhei com ESP32 e transmissão de dados por luz.',
+    'Olá! Sou Lucas Dantas, estudante do 8º período de Engenharia da Computação na Faculdade Matias Machline. Trabalho com Python no dia a dia, principalmente com automação web, RPA e tratamento de dados.',
+    'Hoje sou bolsista em IA e Automação na AX Academy (FPF Tech / LG Electronics Brasil), onde desenvolvo automações com Playwright, Selenium, PyAutoGUI e BotCity em ambiente industrial e concluí o módulo de agentes de IA (LangChain, tools e MCP). Antes, passei dois anos como estagiário de TI na Secretaria de Segurança Pública do Amazonas, investigando, reproduzindo e documentando falhas em sistemas internos.',
+    'Meu projeto principal é o ANCHOR, um agente que transforma pedidos em linguagem natural em ações no navegador usando modelos de IA locais, em que o LLM só planeja e cada ação é verificada. Publiquei um post técnico sobre ele no DEV Community e também construí um servidor MCP no ar na Vercel (steam-mcp). Gosto ainda de sistemas embarcados e já trabalhei com ESP32 e transmissão de dados por luz.',
   ],
-  tags: ['Python', 'Playwright', 'Selenium', 'Pandas', 'RPA', 'Agentes de IA'],
+  tags: ['Python', 'Agentes de IA', 'MCP', 'Playwright', 'Selenium', 'Pandas'],
 };
 
 export const skillCategories = [
@@ -52,13 +52,13 @@ export const skillCategories = [
     label: 'Desenvolvimento',
     icon: '◈',
     color: '#10b981',
-    skills: ['FastAPI', 'Django / DRF', 'Angular', 'React', 'Git / GitHub / GitLab', 'Scrum & Kanban'],
+    skills: ['FastAPI', 'Django / DRF', 'Angular', 'React', 'Vercel', 'Git / GitHub / GitLab', 'Scrum & Kanban'],
   },
   {
     label: 'IA & Embarcados',
     icon: '◇',
     color: '#f59e0b',
-    skills: ['Agentes de IA', 'LLMs locais (Ollama)', 'Noções de ML', 'Data Mining', 'ESP32'],
+    skills: ['Agentes de IA', 'LangChain', 'MCP / FastMCP', 'LLMs locais (Ollama)', 'Noções de RAG', 'Noções de ML', 'Data Mining', 'ESP32'],
   },
 ];
 
@@ -74,7 +74,7 @@ export const featuredSkills = [
 
 export const otherTech = [
   'Tailwind CSS', 'Leaflet', 'Chart.js', 'python-telegram-bot', 'AsyncIO',
-  'Ollama', 'Qwen', 'SQLite', 'Orange', 'VS Code + IA',
+  'Ollama', 'Qwen', 'FastMCP', 'SQLite', 'Orange', 'VS Code + IA',
 ];
 
 export type Project = {
@@ -85,6 +85,7 @@ export type Project = {
   color: string;
   github: string;
   demo?: string;
+  demoLabel?: string;
   badge: string;
 };
 
@@ -95,12 +96,36 @@ export const projects: Project[] = [
   {
     name: 'ANCHOR',
     description:
-      'Agente de automação web que recebe um pedido em texto e o link do site, gera um plano com um LLM local (Qwen via Ollama) e executa cada passo com Playwright. Uma heurística escolhe os elementos da página; quando não tem certeza, pergunta ao usuário e lembra a escolha. Replaneja quando a página muda e confere no fim se o objetivo foi cumprido.',
+      'Agente de automação web que recebe um pedido em texto e o link do site, gera um plano com um LLM local (Qwen via Ollama) e executa cada passo com Playwright. Uma heurística escolhe os elementos da página; quando não tem certeza, pergunta ao usuário e lembra a escolha. Replaneja quando a página muda e confere no fim se o objetivo foi cumprido. Em um benchmark de 30 tarefas com páginas alteradas, concluiu 82% (modelo 4B) e 84% (9B) e reduziu os falsos sucessos de 33 e 41 para 2 e 1 em 150 execuções (números de desenvolvimento).',
     tags: ['Python', 'Playwright', 'Ollama', 'LLM', 'pytest'],
     image: og('ANCHOR'),
     color: '#3b82f6',
     github: gh('ANCHOR'),
+    demo: 'https://dev.to/lucasdantas2701/why-the-llm-in-my-automation-agent-never-clicks-anything-2edm',
+    demoLabel: 'Post no DEV Community',
     badge: 'Em desenvolvimento',
+  },
+  {
+    name: 'steam-mcp',
+    description:
+      'Servidor MCP (FastMCP) de uma loja de jogos fictícia: 9 tools, 1 resource e 1 prompt sobre dados no Supabase (Postgres, Storage e RLS), publicado na Vercel com frontend próprio. Pode ser conectado ao VS Code, ao Claude e a outros clientes MCP, e foi testado por um cliente sem LLM.',
+    tags: ['Python', 'FastMCP', 'MCP', 'Supabase', 'Vercel'],
+    image: og('steam-mcp'),
+    color: '#06b6d4',
+    github: gh('steam-mcp'),
+    demo: 'https://steam-mcp-green.vercel.app',
+    demoLabel: 'Demo ao vivo',
+    badge: 'Projeto de estudo',
+  },
+  {
+    name: 'IA-Express',
+    description:
+      'Chatbot de terminal com LLM local (llama3.2:1b via Ollama) que só responde com base em um manual. Reduz alucinações com busca da seção relevante em Python, checagem de números e fallback para o texto original. Avaliado com 15 perguntas em 5 categorias (12 corretas, 2 parciais, 1 erro), com 5 iterações documentadas.',
+    tags: ['Python', 'Ollama', 'LLM local', 'Anti-alucinação'],
+    image: og('IA-Express'),
+    color: '#14b8a6',
+    github: gh('IA-Express'),
+    badge: 'Projeto de estudo',
   },
   {
     name: 'NightEyes',
@@ -166,7 +191,7 @@ export const timeline: TimelineEvent[] = [
   {
     year: '2026 – hoje',
     title: 'Bolsista em IA e Automação @ AX Academy (FPF Tech / LG Electronics Brasil)',
-    desc: 'Automações web e fluxos de RPA em Python (Playwright, Selenium, PyAutoGUI, BotCity) em ambiente industrial, tratamento e validação de dados com Pandas e uso de agentes de IA para depuração, documentação e otimização de código. Módulos de IA aplicada, Data Mining e Machine Learning.',
+    desc: 'Automações web e fluxos de RPA em Python (Playwright, Selenium, PyAutoGUI, BotCity) em ambiente industrial, tratamento e validação de dados com Pandas e uso de agentes de IA para depuração, documentação e otimização de código. Módulos de agentes de IA (LangChain, tools e MCP), Data Mining e Machine Learning.',
     type: 'work',
     color: '#3b82f6',
   },
@@ -256,17 +281,17 @@ export const currently = [
     icon: '🎓',
     label: 'Cursando',
     title: 'Engenharia da Computação',
-    sub: '7º período, Faculdade Matias Machline',
+    sub: '8º período, Faculdade Matias Machline',
     color: '#a78bfa',
   },
 ];
 
 export const cta = {
   status: 'Disponível para estágio',
-  text: 'Procuro estágio em automação de testes, desenvolvimento de software ou dados. Se sua equipe precisa de alguém que goste de automatizar o que é repetitivo e investigar a causa das falhas, vamos conversar.',
+  text: 'Procuro estágio em engenharia de IA, desenvolvimento de software, automação ou dados. Se sua equipe precisa de alguém que goste de automatizar o que é repetitivo e investigar a causa das falhas, vamos conversar.',
   info: [
     { icon: '📍', text: 'Manaus, AM (GMT-4)' },
-    { icon: '🎓', text: 'Eng. da Computação, 7º período' },
+    { icon: '🎓', text: 'Eng. da Computação, 8º período' },
     { icon: '🌎', text: 'Inglês B2 (ECCE)' },
   ],
 };

@@ -47,7 +47,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
 
         {/* Links overlay */}
-        <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-4 right-4 flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
           <a
             href={project.github}
             target="_blank"
@@ -67,7 +67,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               rel="noopener noreferrer"
               className="w-8 h-8 rounded-lg flex items-center justify-center text-white hover:scale-110 transition-transform"
               style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}
-              title="Demo"
+              title={project.demoLabel ?? 'Demo'}
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
